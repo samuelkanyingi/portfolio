@@ -375,8 +375,7 @@ def send_password_reset_link(email, token):
     # the recipient's email address
     msg = Message("Password Reset", recipients=[email])
     # Set the body of the email message
-    msg.body = f"To reset your password, click on the following link:"
-    "https://web-02.samservices.tech/reset-password/{token}"
+    msg.body = f"To reset your password, click on the following link: https://web-02.samservices.tech/reset-password/{token}"
     # Send the email message
     mail.send(msg)
 
