@@ -22,11 +22,11 @@ To install and run [Fruit_Inventory Web App] locally, follow these steps:
    ```sh
    git clone https://github.com/samuelkanyingi/portfolio.git
 2.  Install dependencies:
-   ```sh
+    ```sh
 pip install -r requirements.txt
 
 3. Run the application:
-   ```sh
+    ```sh
 python app.py
 
 
