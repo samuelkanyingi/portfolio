@@ -2,7 +2,7 @@
 This is my porfolio and all related files.
 
 # Signup and login forms
-* User will fill in details to be abke  to log in and use features in the app.
+* User will fill in details to be able  to log in and use features in the app.
 * If the user does not have an account he or she  will be required to fill in the sign up form asking for registration then after that they will be able to log in and access the app features.
 
 # Manage fruits
@@ -14,3 +14,11 @@ This page is dedicated for user to  see the fruits they have added. Further more
 # Insights page
 * THis page is dedicated for the user to visualize the data they added so they can better understand it.
 
+## Installation
+
+To install and run [Fruit_Inventory Web App] locally, follow these steps:
+
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/samuelkanyingi/portfolio.git
+   
