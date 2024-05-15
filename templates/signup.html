@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.login-form,
+.signup-form {
+  display: inline-block;
+  text-align: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+  width: 300px;
+  border-radius: 5px;
+  margin: 10px;
+}
+.error-message {
+    color: red;
+}
+body {
+    background-color: orange;
+}
+
+    </style>
+</head>
+<body>
+	 <div class="container">
+        <form action='/signup' method="post" class="signup-form" id="signup-form" onsubmit="validateSignupForm(event)">
+          <h2>Signup</h2>
+	 <div class="form-group">
+            <label for="signup-username">Username</label>
+            <input type="text" name="username" class="form-control" id="signup-username" placeholder="Enter username">
+            <small class="error-message" id="username-error"></small>
+          </div>
+          <div class="form-group">
+            <label for="signup-email">Email</label>
+            <input type="email" name="email" class="form-control" id="signup-email" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+            <label for="signup-password">Password</label>
+            <input type="password" name= "password" class="form-control" id="signup-password" placeholder="Enter password">
+            <small class="error-message" id="password-error"></small>
+          </div>
+          <br>
+          <button type="submit" class="btn btn-primary">Signup</button>
+          <p class="text-center">Already have an account? <a href="/login">Login</a></p>
+        </form>
+      </div>
+      <script>
+        function validateSignupForm(event) {
+          event.preventDefault(); // Prevent form submission if validation fails
+
+          const username = document.getElementById('signup-username').value.trim();
+          const password = document.getElementById('signup-password').value.trim();
+
+          // Clear previous error messages
+          document.getElementById('username-error').textContent = '';
+          document.getElementById('password-error').textContent = '';
+
+          // Perform validation checks
+          if (username === '') {
+            document.getElementById('username-error').textContent = 'Please enter a username.';
+            return;
+          }
+
+          if (password === '') {
+            document.getElementById('password-error').textContent = 'Please enter a password.';
+            return;
+          }
+
+          // If all validations pass, you can submit the form programmatically
+          document.getElementById('signup-form').submit();
+	   }
+      </script>
+</body>
+</html>

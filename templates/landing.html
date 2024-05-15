@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Landing Page</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+<style>
+body {
+    font-family: sans-serif;
+}
+nav {
+        display: flex;
+        list-style-type: none;
+        padding: 0;
+        margin: 0;
+        position: sticky;
+}
+nav ul {
+        list-style-type: none;
+         display: flex;
+         flex-direction: row;
+         position: sticky;
+}
+av li {
+        margin-right: 70px;
+        position: sticky;
+}
+nav a {
+        text-decoration: none;
+        color: white;
+        position: sticky;
+}
+.cover-image {
+        width: 100%;
+        max-height: 500px;
+        overflow: hidden;
+        object-fit: cover;
+        background-color: orange;
+        text-align: center;
+        padding-top: 20px;
+        margin-top: 50px;
+
+}
+.cover-image img {
+        margin: 0 auto;
+}
+.step-list {
+  list-style: none; /* Remove default bullets */
+  padding: 0; /* Reset padding for better control */
+
+}
+.step-list li {
+  position: relative; /* Allow absolute positioning of pseudo-element */
+  padding-left: 50px;
+  margin-bottom: 50px; /* Add space between list items */
+  font-family: sans-serif;
+  font-weight: bold;
+}
+.step-list li::before {
+  content: "\25CF"; /* Circle symbol (adjust as desired) */
+  font-size: 50px; /* Size of the bullet */
+  color: #007bff; /* Color of the bullet */
+  position: absolute; /* Position the bullet */
+  left: 0; /* Align left side of bullet */
+  top: 50%; /* Center bullet vertically */
+  transform: translateY(-50%); /* Fine-tune vertical alignment */
+}
+.navbar {
+
+        position: fixed;
+        background-color: black;
+        top: 0;
+        width: 100%;
+
+}
+
+    /* Style the entire form */
+#contact-form {
+  width: 100%; /* Adjust width as needed */
+  max-width: 400px; /* Optional: Set a maximum width */
+  margin: 20px auto; /* Center the form horizontally */
+  padding: 20px; /* Add some padding inside the form */
+  border: 1px solid #ccc; /* Add a thin border */
+  border-radius: 5px; /* Add rounded corners */
+  background-color: yellow;
+}
+* Style the form heading (h2) */
+#contact-form h2 {
+  text-align: center; /* Center the text */
+  margin-bottom: 20px; /* Add space below the heading */
+}
+
+/* Style all the form groups (.form-group) */
+.form-group {
+  margin-bottom: 15px; /* Add space between form groups */
+}
+
+/* Style the labels */
+.form-group label {
+  display: block; /* Make labels on separate lines */
+  margin-bottom: 5px; /* Add space below labels */
+  font-weight: bold; /* Make labels bold */
+}
+
+/* Style the input fields */
+.form-group input,
+.form-group textarea {
+  width: 100%; /* Make inputs and textarea full width */
+  padding: 10px; /* Add padding to inputs and textarea */
+  border: 1px solid #ccc; /* Add a thin border */
+  border-radius: 3px; /* Add rounded corners */
+  box-sizing: border-box; /* Include padding in width calculation */
+  background-color: #fff;
+}
+
+/* Style the textarea specifically */
+.form-group textarea {
+  height: 100px; /* Set a height for the textarea */
+  resize: vertical; /* Allow users to resize the textarea vertically */
+}
+
+/* Style the submit button */
+#contact-form button[type="submit"] {
+  background-color: #4CAF50; /* Green color for the button */
+  color: white; /* White text color */
+  padding: 10px 20px; /* Add padding to the button */
+  border: none; /* Remove default button border */
+  border-radius: 5px; /* Add rounded corners */
+  cursor: pointer; /* Make the cursor a pointer on hover */
+  transition: background-color 0.2s ease-in-out; /* Smooth hover effect */
+} 
+* Add hover effect to the submit button */
+#contact-form button[type="submit"]:hover {
+  background-color: #3e8e41; /* Darker green on hover */
+}
+
+.stock {
+        text-align:center;
+
+        margin-top: 50px;
+        font-weight: bold;
+}
+.containers {
+        background-color: yellow;
+}
+
+
+  .deployed-project-button {
+    background-color: #4CAF50; /* Green color */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+
+  .deployed-project-button:hover {  /* Optional: change button style on hover */
+    background-color: #45a049;
+  }
+#about h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2em;  /* Increase heading size slightly */
+  }
+
+  #about p {
+    line-height: 1.5;  /* Add some space between lines for better readability */
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  #about a {
+    color: #4CAF50;  /* Green color for the link */
+    text-decoration: none;  /* Remove underline from the link */
+  }
+
+  #about a:hover {
+    text-decoration: underline;  /* Add underline on hover */
+  }
+  .cover-text {
+  background-color: #f0f8ff;
+  color: #333;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.cover-text h1 {
+  font-size: 2em;  /* Increase heading size */
+  margin-bottom: 15px;
+}
+    .project-info {
+  border: 1px solid #ddd;
+  padding: 20px;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.project-info h1 {
+  font-size: 1.5em;  /* Increase heading size slightly */
+  margin-bottom: 10px;
+}
+video {
+  display: block;
+  margin: 0 auto;
+  background-color: #f5f5f5;  /* Set your desired background color here */
+  border: 5px solid #ddd;
+  border-radius: 10px;
+}
+
+</style>
+</head>
+<body>
+   <header>
+     <nav class="navbar">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+   <div class="cover-image">
+  <div class="cover-text">
+    <h1>Fresh and Healthy Fruits & Vegetables</h1>
+    <p>Get your daily dose of vitamins with our wide variety of produce!</p>
+  </div>
+   <img src="static/cover2.jpg" alt="Project Cover Image" width="300" height="200">
+
+   </div>
+      <div class="project-info">
+      <h1>Fruit Inventory</h1>
+      <p>This is an inventory where you can keep track of all your fruits</p>
+
+      </div>
+      </header>
+    <main>
+            <section id="about"style="background-color: #f5f5f5; padding: 50px 0;">
+            <h2>About Us</h2>
+            <p> I am a software developer who creates an inventory system to manage all my fruits into
+            one place</p>
+            <p>This project was inspired by manging fruits inventory easily.So i can keep track of things</p>
+            <p>The idea started from last month and its still pressing on to this day</p>
+            <p> I have been passionate about creating an invenory where i can keep tack of all my goods</p>
+            <p> This project serves as a portfolio project for Holberton School <a href= https://www.holbertonschool.com/>Holberon</a>
+            </p>
+            </section>
+
+        <section id="features">
+            <h2>Features</h2>
+            <p>You  can easily add fruits into your inventory and keep track of them
+            <ul class="step-list">
+          <li>Step 1: Add fruit.</li>
+          <li>Step 2: Update fruit.</li>
+          <li>Step 3: Delete fruit.</li>
+
+          <video width="500" height="300" controls>
+          <source src="/static/crud2.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+                </video>
+          <div class="stock">
+           <p>You can search for a fruit within your table  easily</p>
+           </div>
+         <video width="500" height="300" controls style="display: block; margin: 0 auto;">
+          <source src="/static/search.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+           </video>
+
+           <div class="stock">
+           <p>You can easily visualize and Export data to a excel</p>
+           </div>
+
+          <video width="500" height="300" controls style="display: block; margin: 0 auto;">
+          <source src="/static/export.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+           </video>
+           <div class="stock">
+           <p>You can easily get low stock alert</p>
+           </div>
+	   <video width="500" height="300" controls style="display: block; margin: 0 auto; 200~border: 5px solid #ddd;
+                   border-radius: 10px;   background-color: #f5f5f5;">
+          <source src="/static/stock.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+           </video>
+
+
+
+        </ul>
+            </section>
+        <div class="containers">
+        <section id="contact">
+            <h2><center>Contact Us</center></h2>
+            </section>
+
+  <form id="contact-form" method="post" action="your_form_handler.php">
+          <h2><center>Contact Form</center></h2>
+  <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+  </div>
+  <div class="form-group">
+       <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+  </div>
+  <div class="form-group">
+    <label for="message">Message:</label>
+    <textarea id="message" name="message" required></textarea>
+  </div>
+  <button type="submit">Submit</button>
+</form>
+            <a href="http://localhost:5002/login" class="deployed-project-button" target="_blank">View Deployed Project</a>
+        </div>
+    </main>
+<script>
+           const navbar = document.querySelector('.navbar');
+const scrollY = window.scrollY; // Initial scroll position
+
+window.addEventListener('scroll', () => {
+  const currentScrollY = window.scrollY;
+  if (currentScrollY > scrollY) {
+    navbar.classList.add('sticky'); // Add 'sticky' class when scrolling down
+  } else {
+    navbar.classList.remove('sticky'); // Remove 'sticky' class when scrolling up
+  }
+});
+   </script>
+</html>

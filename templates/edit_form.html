@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Edit Fruit</title>
+</head>
+<body>
+    <h1>Edit Fruit</h1>
+    <form action="/update_fruit/{{ fruit.id }}" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" value="{{ fruit.name }}"><br>
+        <label for="quantity">Quantity:</label>
+        <input type="number" id="quantity" name="quantity" value="{{ fruit.quantity }}"><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
