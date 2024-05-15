@@ -26,7 +26,8 @@ To install and run [Fruit_Inventory Web App] locally, follow these steps:
 pip install -r requirements.txt
 
 Run the application:
- ```sh
+   ```sh
 python app.py
+
 
 * Access the application in your web browser at http://localhost:5000.
