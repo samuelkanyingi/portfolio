@@ -1,0 +1,8 @@
+pip install flask
+pip install flask_mail
+pip install flask_sqlalchemy
+pip install flask_migrate
+pip install datetime
+pip install apscheduler
+pip install openpyxl
+pip install io
