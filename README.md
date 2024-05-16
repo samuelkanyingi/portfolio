@@ -31,3 +31,10 @@ To install and run [Fruit_Inventory Web App] locally, follow these steps:
 
 
 4. Access the application in your web browser at http://localhost:5000.
+
+5. Usage
+   ```sh
+   open terminal run python app.py or flask run
+
+## Contributing
+* Contributions are always welcome!
