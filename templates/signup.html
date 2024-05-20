@@ -31,9 +31,41 @@ body {
     background-color: orange;
 }
 
+.navbar {
+
+        position: fixed;
+        background-color: black;
+        top: 0;
+        width: 100%;
+        }
+        .navbar ul {
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        position: sticky;
+        }
+        .navbar li {
+        margin-right: 70px;
+        position: sticky;
+        list-style: none;
+        }
+.navbar a {
+        text-decoration: none;
+        color: white;
+        position: sticky;
+        list-style: none;
+        }
     </style>
 </head>
 <body>
+	 <nav class="navbar">
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/table">Manage Fruits</a></li>
+            <li><a href="/get_fruit">Insight</a></li>
+        </ul>
+    </nav>
+
 	 <div class="container">
         <form action='/signup' method="post" class="signup-form" id="signup-form" onsubmit="validateSignupForm(event)">
           <h2>Signup</h2>

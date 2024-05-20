@@ -36,39 +36,102 @@
         position: sticky;
         list-style: none;
         }
+
+	body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .form-container {
+            margin: 100px auto;
+            max-width: 600px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #343a40;
+        }
+        .form-control {
+            margin-bottom: 15px;
+        }
+        .btn-primary {
+            width: 100%;
+        }
     </style>
     <body>
             <nav class="navbar">
         <ul>
             <li><a href="/">Home</a></li>
             <li><a href="/table">Manage Fruits</a></li>
-            <li><a href="/chart">Insight</a></li>
+            <li><a href="/get_fruit">Insight</a></li>
             <li><a href="/login">login</a></li>
 
         </ul>
     </nav>
 
-    <div class="form">
+    <div class="form-container shadow p-4 bg-white rounded">
+    <!--div class="form"-->
     <h2>Add New Fruit</h2>
     <form action="/add_fruit" method="post">
+	<div class="mb-3">
         <label for="name">Name:</label><br>
-        <input type="text" id="name" name="name"><br>
+        <input type="text" id="name" name="name"  required><br>
+	</div>
+	<div class="mb-3">
         <label for="quantity">Quantity:</label><br>
-        <input type="number" id="quantity" name="quantity"><br><br>
+        <input type="number" id="quantity" name="quantity" required><br><br>
+	<div class="mb-3">
 	<label for="buying_price">Buying Price:</label><br>
-        <input type="number" id="buying_price" name="buying_price"><br>
+        <input type="number" id="buying_price" name="buying_price" required><br>
+	</div>
+	<div class="mb-3">
         <label for="selling_price">Selling Price:</label><br>
-        <input type="number" id="selling_price" name="selling_price"><br>
-
+        <input type="number" id="selling_price" name="selling_price" required><br>
+	</div>
+	<div class="mb-3">
         <label for="expiry_date">Expiry Date:</label><br>
-        <input type="date" id="expiry_date" name="expiry_date"><br><br>
-        <button id="add" type="submit"  class="btn btn-primary" value="submit">Add</button>
-        <div id="alertMessage" class="alert alert-success" role="alert" style="display: none;">
-                Successfully Added!
-</div>
+        <input type="date" id="expiry_date" name="expiry_date"required><br><br>
+	</div>
+	<button id="add" type="submit"  class="btn btn-primary" value="submit">Add</button>
+        <!--<div id="alertMessage" class="alert alert-success" role="alert" style="display: none;">
+	Successfully Added!-->
+
     </form>
     </div>
     <script>
+	  function validateForm(event) {
+	    event.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const quantity = document.getElementById('quantity').value.trim();
+            const buyingPrice = document.getElementById('buying_price').value.trim();
+            const sellingPrice = document.getElementById('selling_price').value.trim();
+            const expiryDate = document.getElementById('expiry_date').value.trim();
+
+            if (!name) {
+                alert('Name is required');
+                return false;
+            }
+            if (!quantity || quantity <= 0) {
+                alert('Quantity must be a positive number');
+                return false;
+            }
+            if (!buyingPrice || buyingPrice <= 0) {
+                alert('Buying price must be a positive number');
+                return false;
+            }
+            if (!sellingPrice || sellingPrice <= 0) {
+                alert('Selling price must be a positive number');
+                return false;
+            }
+            if (!expiryDate) {
+                alert('Expiry date is required');
+                return false;
+            }
+            return true;
+        }
   document.getElementById("add").addEventListener("click", function() {
           //alert("Added Successfully");
           var alertElement = document.getElementById("alertMessage");

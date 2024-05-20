@@ -150,8 +150,10 @@ def add_fruit():
     name = request.form['name']
     quantity = int(request.form['quantity'])
     expiry_date = request.form['expiry_date']
-    buying_price = float(request.form['buying_price'])
-    selling_price = float(request.form['selling_price'])
+    buying_price = int(request.form['buying_price'])
+    selling_price = int(request.form['selling_price'])
+    
+
     # Check if a fruit with the same name already exists in the database
     existing_fruit = Fruit.query.filter_by(name=name).first()
     if existing_fruit:
@@ -160,7 +162,7 @@ def add_fruit():
         return redirect('/table')
     # Calculate the profit as
     # (selling price - buying price) * quantity, rounded to the nearest integer
-    profit = round(selling_price - buying_price) * quantity
+    profit = (selling_price - buying_price) * quantity
     # Calculate the loss as 0 if profit is non-negative
     # otherwise as the absolute value of profit
     loss = 0 if profit >= 0 else -profit
@@ -187,17 +189,7 @@ def add_fruit():
 @app.route('/', methods=['GET', 'POST'])
 def index():
     # Render the 'index.html' template when the root URL ('/') is accessed
-    return render_template('index.html')
-
-
-@app.route('/table.html', methods=['POST'])
-def action():
-    fname = request.form['fname']  # Get the submitted fruit name
-    lname = request.form['lname']  # Get the submitted fruit quantity
-    # Render the 'action.html' template with
-    # the submitted first and last names as context
-    return render_template('action.html', fname=fname, lname=lname)
-
+    return render_template('login.html')
 
 @app.route('/table')
 def table():
@@ -208,12 +200,6 @@ def table():
     # and the low inventory threshold
     return render_template('table.html', fruits=fruits,
                            LOW_INVENTORY_THRESHOLD=LOW_INVENTORY_THRESHOLD)
-
-
-@app.route('/chart')
-def indexm():
-    # Render the 'chart.html'
-    return render_template('chart.html')
 
 
 @app.route('/edit_fruit/<int:fruit_id>', methods=['GET'])
@@ -227,12 +213,6 @@ def edit_fruit_form(fruit_id):
     else:
         # Handle the case where the fruit is not found with 404 status code
         return "Fruit not found", 404
-
-
-@app.route('/edit_form')
-def edit_form():
-    # Render the 'edit_form.html' template
-    return render_template('edit_form.html')
 
 
 @app.route('/signme', methods=['POST', 'GET'])
