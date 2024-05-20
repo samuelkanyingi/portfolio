@@ -139,6 +139,7 @@ def update_fruit(fruit_id):
         fruit.selling_price = float(request.form.get('selling_price', fruit.selling_price))
         fruit.expiry_date = request.form.get('expiry_date', fruit.expiry_date)
         fruit.profit = (fruit.selling_price - fruit.buying_price) * fruit.quantity
+        fruit.loss = 0 if fruit.profit >= 0 else -fruit.profit
         db.session.commit()  # Commit the changes to the database
         reset_ids()  # Call a function to reset IDs
         # Redirect to the '/table' route after successful update
