@@ -134,7 +134,11 @@ def update_fruit(fruit_id):
         # Update the fruit's name with the value from the form
         fruit.name = request.form.get('name', fruit.name)
         # Update the fruit's quantity with the value from the form
-        fruit.quantity = request.form.get('quantity', fruit.quantity)
+        fruit.quantity = float(request.form.get('quantity', fruit.quantity))
+        fruit.buying_price = float(request.form.get('buying_price', fruit.buying_price))
+        fruit.selling_price = float(request.form.get('selling_price', fruit.selling_price))
+        fruit.expiry_date = request.form.get('expiry_date', fruit.expiry_date)
+        fruit.profit = (fruit.selling_price - fruit.buying_price) * fruit.quantity
         db.session.commit()  # Commit the changes to the database
         reset_ids()  # Call a function to reset IDs
         # Redirect to the '/table' route after successful update
@@ -144,46 +148,54 @@ def update_fruit(fruit_id):
         return jsonify({'message': 'Fruit not found'})
 
 
-@app.route('/add_fruit', methods=['POST'])
+@app.route('/addFruit', methods=['GET'])
+def add_form():
+    # Render the 'index.html' template when the root URL ('/addFruit') is accessed
+    return render_template('index.html')
+
+@app.route('/add_fruit', methods=['POST', 'GET'])
 def add_fruit():
+    if request.method == 'GET':
+        return render_template('index.html')
+    else:
     # Retrieve form data for the new fruit
-    name = request.form['name']
-    quantity = int(request.form['quantity'])
-    expiry_date = request.form['expiry_date']
-    buying_price = int(request.form['buying_price'])
-    selling_price = int(request.form['selling_price'])
+        name = request.form['name']
+        quantity = int(request.form['quantity'])
+        expiry_date = request.form['expiry_date']
+        buying_price = int(request.form['buying_price'])
+        selling_price = int(request.form['selling_price'])
     
 
     # Check if a fruit with the same name already exists in the database
-    existing_fruit = Fruit.query.filter_by(name=name).first()
-    if existing_fruit:
+        existing_fruit = Fruit.query.filter_by(name=name).first()
+        if existing_fruit:
         # If the fruit already exists, redirect to the '/table' route
         # without adding
-        return redirect('/table')
+            return redirect('/table')
     # Calculate the profit as
     # (selling price - buying price) * quantity, rounded to the nearest integer
-    profit = (selling_price - buying_price) * quantity
+        profit = (selling_price - buying_price) * quantity
     # Calculate the loss as 0 if profit is non-negative
     # otherwise as the absolute value of profit
-    loss = 0 if profit >= 0 else -profit
+        loss = 0 if profit >= 0 else -profit
 
     # Create a new Fruit instance with the provided data
-    new_fruit = Fruit(
+        new_fruit = Fruit(
                       name=name, quantity=quantity, buying_price=buying_price,
                       selling_price=selling_price, expiry_date=expiry_date,
                       profit=profit, loss=loss)
 
     # Calculate the number of days remaining until
     # the expiry date for the new fruit
-    new_fruit.calculate_days_remaining()
+        new_fruit.calculate_days_remaining()
     # Add the new fruit to the database session
-    db.session.add(new_fruit)
+        db.session.add(new_fruit)
     # Commit the changes to save the new fruit to the database
-    db.session.commit()
-    reset_ids()  # Call a function to reset IDs
+        db.session.commit()
+        reset_ids()  # Call a function to reset IDs
 
     # Redirect to the '/table' route after successful addition
-    return redirect('/table')
+        return redirect('/table')
 
 
 @app.route('/', methods=['GET', 'POST'])
